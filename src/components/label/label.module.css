@@ -1,0 +1,9 @@
+.root {
+  display: block;
+  margin-bottom: 4px;
+  font: inherit;
+  color: var(--accent-6);
+  font-size: var(--font);
+  line-height: var(--line-height);
+  font-weight: 500;
+}

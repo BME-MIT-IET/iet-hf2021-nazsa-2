@@ -1,0 +1,236 @@
+.root {
+  height: 40px;
+  position: sticky;
+  top: 0;
+  width: 100%;
+  background: var(--brand);
+  font-size: 0.875rem;
+  z-index: 999;
+}
+
+.content {
+  margin: 0 auto;
+  max-width: var(--page-with-padding);
+  padding: 0 1.5rem;
+  display: flex;
+  align-items: center;
+  height: 100%;
+}
+
+.logo {
+  text-decoration: none;
+  color: var(--background);
+  font-weight: 600;
+  font-size: 22px;
+  line-height: 27px;
+  letter-spacing: -0.04em;
+}
+
+.root nav {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* if the last element is an a with 0.5rem padding this is needed */
+}
+
+.root nav > a {
+  color: var(--background);
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.root nav > a.active {
+  color: var(--background);
+  cursor: not-allowed;
+}
+
+.root nav > a:hover {
+  color: var(--background);
+}
+
+.leftNav {
+  margin-left: 1rem;
+}
+
+.rightNav {
+  margin-left: auto;
+}
+
+.rightNav,
+.toggle {
+  transition: opacity 200ms ease-out;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.rightNav.visible,
+.toggle.visible,
+.root .ask.visible {
+  opacity: 1;
+  pointer-events: unset;
+}
+
+.root .ask {
+  display: block;
+  border: 1px solid var(--accent-2);
+  padding: 0 0.875rem;
+  line-height: 2;
+  border-radius: 5px;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.root .ask:hover,
+.root .ask.active {
+  border-color: var(--foreground);
+}
+
+.toggle,
+.mobileNav {
+  display: none;
+}
+
+@media screen and (max-width: 950px) {
+  .toggle {
+    display: block;
+    margin-left: auto;
+    height: 40px;
+    width: 24px;
+  }
+
+  .root.active {
+    box-shadow: none;
+  }
+
+  .root .rightNav,
+  .root .leftNav {
+    display: none;
+  }
+
+  .mobileNav.active {
+    display: block;
+    background: var(--background);
+    height: calc(100vh - 40px);
+    position: fixed;
+    top: 40px;
+    width: 100%;
+    overflow-y: auto;
+    z-index: 2;
+    padding: 0.75rem 1.5rem 3rem;
+  }
+
+  .mobileNav a {
+    color: var(--foreground);
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 40px;
+    border-bottom: 1px solid var(--accent-2);
+  }
+}
+
+.menuWrapper {
+  position: relative;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.menuButton {
+  composes: reset from global;
+}
+
+.menuButton > * {
+  border-color: var(--brand-hover) !important;
+}
+
+.menuItems {
+  position: absolute;
+  min-width: 225px;
+  background: var(--background);
+  border: 1px solid #dddddd;
+  box-sizing: border-box;
+  box-shadow: 0px 1px 8px rgba(0, 0, 0, 0.08);
+  border-radius: 3px;
+  right: 0;
+  padding: var(--gap-small) 0;
+  outline: none;
+}
+
+.menuItems .separator {
+  margin: var(--gap-small) 0;
+  background: #dddddd;
+  height: 1px;
+  width: 100%;
+  display: block;
+}
+
+.menuItem {
+  composes: reset from global;
+  width: 100%;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  padding: 0 var(--gap);
+  outline: none;
+  cursor: pointer;
+}
+
+.menuItem.info {
+  cursor: initial;
+}
+
+.menuItem.info a {
+  color: #7b7b7b;
+  text-decoration: none;
+}
+
+.user {
+  padding: var(--gap-small) 12px;
+  display: flex;
+  align-items: center;
+}
+
+.user *:first-child {
+  flex-shrink: 0;
+}
+
+.userInfo {
+  margin-left: var(--gap);
+}
+
+.userInfo p:first-of-type {
+  font-weight: 500;
+  margin-bottom: 2px;
+}
+
+.userInfo p:last-of-type {
+  color: #7b7b7b;
+}
+
+.menuItem.active {
+  background: #f3f3f3;
+}
+
+.menuItem svg {
+  margin-right: var(--gap);
+}
+
+.plusButton {
+  composes: reset from global;
+  height: 28px;
+  width: 28px;
+  border-radius: var(--radius);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: var(--gap-large);
+  cursor: pointer;
+  color: var(--background);
+}
+
+.plusButton:hover {
+  background: rgba(255, 255, 255, 0.2);
+}

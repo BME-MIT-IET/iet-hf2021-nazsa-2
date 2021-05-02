@@ -1,0 +1,88 @@
+.page {
+  composes: screen from global;
+  background: var(--background);
+}
+
+.root {
+  width: 100%;
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+.content {
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.content label:not(:first-of-type) {
+  margin-top: 1.5rem;
+}
+
+.content label,
+.content label > * {
+  width: 100%;
+}
+
+.fileInput {
+  composes: visuallyHidden from global;
+}
+
+.submitRow {
+  margin-top: 24px;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.attachment {
+  padding: 4px 10px;
+  margin-top: 24px;
+  min-height: 32px;
+  width: 100%;
+  background: #eaeaea;
+  border-radius: var(--radius);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.attachment button {
+  background: #eaeaea !important;
+}
+
+.attachment button:hover {
+  background: #cccccc !important;
+}
+
+.fileName {
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+  max-width: 80%;
+}
+
+.fileButtonContainer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.fileButtonContainer button {
+  margin-right: var(--gap);
+}
+
+@media screen and (min-width: 768px) {
+  .page {
+    padding: 40px 0;
+    background: var(--accent-1);
+  }
+
+  .root {
+    background: var(--background);
+    border-radius: var(--radius-large);
+    border: 1px solid var(--input-border);
+  }
+}

@@ -1,0 +1,114 @@
+.answerForm {
+  margin-left: var(--indent);
+  display: flex;
+  flex-direction: column;
+  padding-bottom: var(--gap-large);
+  border-bottom: 1px solid var(--border);
+  margin-bottom: var(--gap-large);
+}
+
+.answerForm button {
+  height: 32px;
+}
+
+.answerFormContent {
+  display: flex;
+  width: 100%;
+}
+
+.answerFormContent img {
+  margin-right: 12px;
+}
+
+.answerFormContent textarea {
+  margin-left: 12px;
+  flex: 1;
+}
+
+.answerFormActions {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  margin-left: var(--gap-large);
+}
+
+.answerFormActions > button + button {
+  margin-top: var(--gap);
+}
+
+.inputWrapper {
+  flex: 1;
+  margin-left: 12px;
+}
+
+.input {
+  outline: none;
+  max-width: 100%;
+  width: 100%;
+  white-space: pre-wrap;
+  word-break: break-word;
+  caret-color: rgb(55, 53, 47);
+  position: relative;
+  max-height: 45vh;
+  overflow: hidden auto;
+  margin-top: calc(((32 - 17) / 2) * 1px);
+  cursor: text;
+  min-height: 1em;
+}
+
+.input.errored {
+  color: var(--error);
+  margin-bottom: var(--gap-small);
+}
+
+.input.empty::before {
+  position: absolute;
+  color: rgb(55, 53, 47);
+  -webkit-text-fill-color: rgba(55, 53, 47, 0.4);
+  content: attr(placeholder);
+  display: block;
+}
+
+.submitButtons {
+  display: flex;
+  align-items: center;
+}
+
+.submitButtons > * + * {
+  margin-left: var(--gap);
+}
+
+.submitButtons + * {
+  margin-top: var(--gap);
+}
+
+.fileInput {
+  composes: visuallyHidden from global;
+}
+
+.attachment {
+  padding: 4px 10px;
+  margin-top: var(--gap-large);
+  min-height: 32px;
+  width: 100%;
+  background: #eaeaea;
+  border-radius: var(--radius);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.attachment button {
+  background: #eaeaea !important;
+}
+
+.attachment button:hover {
+  background: #cccccc !important;
+}
+
+.fileName {
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+  max-width: 80%;
+}

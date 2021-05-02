@@ -1,0 +1,64 @@
+.list {
+  position: fixed;
+  bottom: 20px;
+  left: 50%;
+  margin-left: -150px;
+  width: 300px;
+  transition: transform 400ms ease;
+}
+
+.toastContainer {
+  width: 100%;
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  transition: all 400ms ease;
+  transform: translate3d(0, calc(100% + 10px), 0);
+  opacity: 1;
+  user-select: none;
+}
+
+.toastContainer.hidden {
+  opacity: 0;
+  pointer-events: none;
+  transition: all 200ms ease;
+}
+
+.toastContainer.visible {
+  transform: translate3d(
+      0,
+      calc(var(--index) * -35%),
+      calc(var(--index) * -1px)
+    )
+    scale(calc(1 - (var(--index) / 100) * 5));
+}
+
+.list:hover .toastContainer.visible {
+  transform: translate3d(
+    0,
+    calc(var(--index) * (-8px + -100%)),
+    calc(var(--index) * -1px)
+  );
+}
+
+.toast {
+  width: 100%;
+  height: 100%;
+  background: var(--background);
+  color: var(--foreground);
+  border-radius: var(--radius-large);
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  display: flex;
+  align-items: center;
+  padding: 12.5px 16px;
+  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.08);
+  font-size: 14px;
+}
+
+@media (max-width: 440px) {
+  .list {
+    width: 90vw;
+    left: 5vw;
+    margin-left: 0;
+  }
+}

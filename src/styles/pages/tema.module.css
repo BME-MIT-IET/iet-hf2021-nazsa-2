@@ -1,0 +1,66 @@
+.root {
+  composes: container from global;
+  composes: screen from global;
+  padding-bottom: 40px;
+}
+
+.header,
+.main {
+  width: 700px;
+  max-width: 100%;
+  margin: 0 auto;
+}
+
+.header {
+  margin-bottom: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid var(--input-border);
+  position: sticky;
+  padding-top: 24px;
+  top: calc(40px);
+  background: var(--background);
+  z-index: 1;
+  min-height: 77px;
+}
+
+.headerContent h1,
+.headerContent h2 {
+  line-height: 1;
+}
+
+.headerContent h1 {
+  font-weight: 500;
+  font-size: var(--font-large);
+}
+
+.headerContent h2 {
+  font-weight: 400;
+  font-size: var(--font);
+  margin: 8px 0 12px;
+}
+
+.headerActions {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.headerActions > * + * {
+  margin-left: var(--gap);
+}
+
+.modalBody p {
+  margin-bottom: 16px;
+}
+
+.modalBody textarea {
+  width: 100%;
+}
+
+.empty {
+  font-size: 14px;
+  margin-bottom: 8px;
+  font-weight: 500;
+}

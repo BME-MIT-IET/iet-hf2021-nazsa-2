@@ -1,0 +1,94 @@
+@import "./font.css";
+
+:root {
+  /* Colors */
+  --background: #ffffff;
+  --foreground: #202020;
+  --accent-1: #fafafa;
+  --accent-2: #ebebeb;
+  --accent-3: #d6d6d6;
+  --accent-4: #7b7b7b;
+  --input-border: #e6e6e6;
+  --input-disabled-color: #888888;
+  --input-errored-placeholder-color: rgba(219, 76, 64, 0.75);
+  --error: #db4c40;
+  --brand: #246fe0;
+  --brand-hover: #1d63cc;
+
+  /* Spacing */
+  --radius: 3px;
+  --radius-large: 5px;
+  --font-small: 12px;
+  --font: 14px;
+  --font-large: 18px;
+  --line-height: 1.25;
+  --gap-small: 4px;
+  --gap: 8px;
+  --gap-large: 16px;
+  --page: 1000px;
+  --page-with-padding: calc(var(--page) + 2 * 1.5rem);
+
+  /* https://reach.tech/styling/ */
+  --reach-tooltip: 1;
+}
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: "Inter", -apple-system, BlinkMacSystemFont, Segoe UI, Roboto,
+    Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+  font-size: var(--font);
+  line-height: var(--line-height);
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.container {
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+  max-width: 100%;
+  width: var(--page-with-padding);
+}
+
+.screen {
+  min-height: calc(100vh - 40px);
+}
+
+.reset {
+  appearance: none;
+  outline: none;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  vertical-align: middle;
+  text-decoration: none;
+  -webkit-tap-highlight-color: transparent;
+  background: unset;
+}
+
+.visuallyHidden {
+  border: 0;
+  padding: 0;
+  clip: rect(0 0 0 0);
+  clip-path: inset(100%);
+  height: 1px;
+  width: 1px;
+  margin: -1px;
+  overflow: hidden;
+  position: absolute;
+  appearance: none;
+  white-space: nowrap;
+  word-wrap: normal;
+}

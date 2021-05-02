@@ -1,0 +1,43 @@
+.root {
+  composes: reset from global;
+  resize: none;
+  font-size: var(--font);
+  line-height: var(--line-height);
+
+  background: var(--background);
+  color: var(--foreground);
+  border: 1px solid var(--input-border);
+  border-radius: var(--radius);
+  padding: 9px 10px;
+}
+
+.root::placeholder {
+  color: var(--accent-4);
+}
+
+.root:focus:not(.disabled):not(.errored) {
+  color: var(--foreground);
+  border-color: var(--foreground);
+}
+
+.root.disabled {
+  -webkit-text-fill-color: var(--input-disabled-color);
+  color: var(--input-disabled-color);
+  cursor: not-allowed;
+  opacity: 1;
+  background: var(--accent-1);
+}
+
+.root.errored {
+  border-color: var(--error);
+  color: var(--error);
+}
+
+.root.errored::placeholder {
+  color: var(--input-errored-placeholder-color);
+}
+
+.errorRoot {
+  display: flex;
+  margin-top: 4px;
+}

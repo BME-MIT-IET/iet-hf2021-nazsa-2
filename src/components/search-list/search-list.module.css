@@ -1,0 +1,67 @@
+.root {
+  width: calc(800px + 2 * 24px);
+  max-width: 100%;
+  padding: 0 24px 24px;
+  margin: 0 auto;
+  position: relative;
+  composes: screen from global;
+}
+
+.tabsContainer {
+  position: sticky;
+  top: calc(40px);
+  padding-top: 24px;
+  background: var(--background);
+}
+
+.results {
+  margin-top: var(--gap-large);
+}
+
+.result {
+  border-bottom: 1px solid var(--input-border);
+  cursor: pointer;
+  color: var(--foreground);
+  display: flex;
+  align-items: center;
+  white-space: pre-wrap;
+  padding: 12px 0;
+}
+
+.result svg {
+  margin-right: var(--gap);
+}
+
+.result:hover {
+  text-decoration: underline;
+}
+
+.empty {
+  display: flex;
+  align-items: center;
+  min-height: 41px;
+}
+
+.empty b {
+  font-weight: 600;
+}
+
+.loadMore {
+  padding: 12px 0;
+  font-weight: 500;
+  font-size: 0.875rem;
+  cursor: pointer;
+  display: inline-block;
+  width: auto;
+}
+
+.loadMore:hover {
+  text-decoration: underline;
+}
+
+.loadMore.loading {
+  color: var(--accent-4);
+  pointer-events: none;
+  text-decoration: none;
+  cursor: initial;
+}

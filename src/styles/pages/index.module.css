@@ -1,0 +1,49 @@
+.root {
+  composes: container from global;
+  composes: screen from global;
+  padding-top: 24px;
+  padding-bottom: 40px;
+  display: grid;
+  grid-template-columns: 220px 1fr;
+  grid-column-gap: 80px;
+  grid-template-areas: "aside main";
+}
+
+.aside {
+  grid-area: aside;
+  position: relative;
+}
+
+.topicStats {
+  position: sticky;
+  top: calc(40px + 24px);
+  left: 0;
+}
+
+.empty, .topicStats h1 {
+  font-size: 14px;
+  margin-bottom: 8px;
+  font-weight: 500;
+}
+
+.topicStats ul {
+  list-style: none;
+}
+
+.topicStats li {
+  min-height: 41px;
+  border-bottom: 1px solid var(--input-border);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: relative;
+  cursor: pointer;
+}
+
+.topicStats li:hover span:first-of-type {
+  text-decoration: underline;
+}
+
+.main {
+  grid-area: main;
+}

@@ -1,0 +1,70 @@
+.root {
+  position: relative;
+  display: inline-flex;
+  background: var(--background);
+  color: var(--foreground);
+  border: 1px solid var(--input-border);
+  border-radius: var(--radius);
+  height: 35px;
+  overflow: hidden;
+  width: 100%;
+  font: inherit;
+  font-size: var(--font-size);
+  line-height: var(--line-height);
+}
+
+.select {
+  composes: reset from global;
+  color: inherit;
+  padding: 0 calc(24px + 2 * 4px) 0 10px;
+  user-select: none;
+  width: 100%;
+}
+
+.arrow {
+  pointer-events: none;
+  height: 100%;
+  position: absolute;
+  right: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  margin-right: 4px;
+}
+
+.root:focus-within:not(.disabled):not(.errored) {
+  border-color: var(--foreground);
+}
+
+.root:focus-within:not(.disabled):not(.errored) .arrow {
+  color: var(--foreground);
+}
+
+.root.errored {
+  color: var(--error);
+  border-color: var(--error);
+}
+
+.root.disabled {
+  background: var(--accent-1);
+  border-color: var(--input-border);
+  color: var(--input-disabled-color);
+  opacity: 1;
+  -webkit-text-fill-color: var(--input-disabled-color);
+}
+
+.root.disabled .select {
+  cursor: not-allowed;
+}
+
+/* if first option has value="" and the select element is required we can have a nice "placeholder" style */
+.select:invalid,
+.select:invalid + .arrow {
+  color: var(--input-disabled-color);
+}
+
+.errorRoot {
+  display: flex;
+  margin-top: 4px;
+}
