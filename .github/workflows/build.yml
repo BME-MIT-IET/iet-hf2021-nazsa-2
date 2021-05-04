@@ -19,6 +19,6 @@ jobs:
         with:
           node-version: "14"
       - run: npm install
-      - uses: microsoft/playwright-github-action@v1
+        uses: microsoft/playwright-github-action@v1
       - name: Build and Test project on Node.js 14
       - run: npm run test
