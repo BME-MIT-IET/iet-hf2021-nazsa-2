@@ -34,10 +34,10 @@ describe("Login flow", () => {
     expect(page).toHaveSelector("text=torzs");
 
     const url = await page.url();
-    let kurva = url.split("/");
-    kurva.pop();
-    let tmp = kurva.join("/");
-    expect(tmp).toBe("http://localhost:3000/kerdes");
+    let tmp = url.split("/");
+    tmp.pop();
+    let final = tmp.join("/");
+    expect(final).toBe("http://localhost:3000/kerdes");
     ///data-test -> await page.click('[data-test="editQuestionButton"]');
   });
 });
