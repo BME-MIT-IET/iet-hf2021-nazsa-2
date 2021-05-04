@@ -1,10 +1,11 @@
 module.exports = {
-	serverOptions: {
-		command: "next start -p 3000",
-		port: 3000,
-	},
-	browsers: ["chromium"],
-	launchOptions: {
-		headless: true,
-	},
+  serverOptions: {
+    command: "next start -p 3000",
+    port: 3000,
+  },
+  browsers: ["chromium"],
+  launchOptions: {
+    headless: false,
+    slowMo: 1000,
+  },
 };
