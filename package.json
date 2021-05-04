@@ -3,9 +3,8 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "test": "jest",
-    "test:ui": "jest ui",
-    "test:ui:build": "next build && jest ui"
+    "test": "next build && jest",
+    "test:ui": "jest ui"
   },
   "dependencies": {
     "@elastic/elasticsearch": "^7.10.0",
