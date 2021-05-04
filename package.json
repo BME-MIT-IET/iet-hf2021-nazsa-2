@@ -4,6 +4,7 @@
     "build": "next build",
     "start": "next start",
     "test": "next build && jest",
+    "test:unit": "jest unit",
     "test:ui": "jest ui"
   },
   "dependencies": {
