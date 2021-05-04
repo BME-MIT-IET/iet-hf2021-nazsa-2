@@ -10,3 +10,4 @@ build
 *.tfstate.backup
 *.tfstate.lock.info
 crash.log
+package-lock.json
