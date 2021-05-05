@@ -36,6 +36,9 @@ jobs:
           envkey_OAUTH_PASS: ${{ secrets.OAUTH_PASS }}
           envkey_OAUTH_ID: ${{ secrets.OAUTH_ID }}
           envkey_JWT_SECRET: ${{ secrets.JWT_SECRET }}
+          envkey_TEST_OAUTH_USERNAME: ${{ secrets.TEST_OAUTH_USERNAME }}
+          envkey_TEST_OAUTH_PASSWORD: ${{ secrets.TEST_OAUTH_PASSWORD }}
+          envkey_TEST_OAUTH_PROFILE_NAME: ${{ secrets.TEST_OAUTH_PROFILE_NAME }}
 
       - uses: microsoft/playwright-github-action@v1
       - name: Build and Test project on Node.js 14
