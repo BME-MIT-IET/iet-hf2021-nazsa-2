@@ -1,6 +1,6 @@
 import { HTTPError } from "lib/utils";
 
-function sendError(res, error) {
+export function sendError(res, error) {
   if (error instanceof HTTPError) {
     return res.status(error.statusCode).json({ error: error.message });
   }
