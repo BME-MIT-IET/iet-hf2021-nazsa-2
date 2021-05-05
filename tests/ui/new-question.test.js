@@ -40,4 +40,11 @@ describe("Login flow", () => {
     expect(final).toBe("http://localhost:3000/kerdes");
     ///data-test -> await page.click('[data-test="editQuestionButton"]');
   });
+
+  it("Questions should be seachable", async () => {
+    await page.keyboard.press("Tab");
+    await page.keyboard.press("Tab");
+    await page.keyboard.type("cim");
+    expect(page).toHaveSelector("text=cim");
+  });
 });
