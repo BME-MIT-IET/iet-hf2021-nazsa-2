@@ -39,4 +39,18 @@ jobs:
 
       - uses: microsoft/playwright-github-action@v1
       - name: Build and Test project on Node.js 14
-        run: npm install && npm run test
+        run: npm install && npm run test:ci
+
+      - name: Test Report
+        uses: dorny/test-reporter@v1
+        if: success() || failure() # run this step even if previous step failed
+        with:
+          name: JEST Tests # Name of the check run which will be created
+          path: reports/jest-*.xml # Path to test results
+          reporter: jest-junit # Format of test results
+
+      - name: Publish Unit Test Results
+        uses: EnricoMi/publish-unit-test-result-action@v1
+        if: always()
+        with:
+          files: reports/**/*.xml
