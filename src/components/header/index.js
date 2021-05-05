@@ -48,6 +48,7 @@ const Header = () => {
                   <button
                     className={styles.plusButton}
                     onClick={() => router.push("/uj")}
+                    id="test-new-question"
                   >
                     <Plus />
                   </button>
