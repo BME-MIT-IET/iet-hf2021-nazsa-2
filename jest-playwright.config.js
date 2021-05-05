@@ -4,8 +4,9 @@ module.exports = {
     port: 3000,
   },
   browsers: ["chromium"],
-  launchOptions: {
-    headless: false,
-    slowMo: 500,
-  },
+  // make sure to only enalbe these on development on local machine
+  //   launchOptions: {
+  //     headless: false,
+  //     slowMo: 500,
+  //   },
 };
