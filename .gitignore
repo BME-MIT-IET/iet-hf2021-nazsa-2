@@ -11,3 +11,4 @@ build
 *.tfstate.lock.info
 crash.log
 package-lock.json
+reports/
