@@ -4,7 +4,7 @@
 		"build": "next build",
 		"start": "next start",
 		"test": "next build && jest",
-		"test:ci": "next build && jest --ci --reporters=default --reporters=jest-Junit",
+		"test:ci": "next build && jest --ci --reporters=default --reporters=jest-junit",
 		"test:unit": "jest unit",
 		"test:ui": "jest ui"
 	},
