@@ -7,6 +7,6 @@ module.exports = {
   // make sure to only enalbe these on development on local machine
   launchOptions: {
     headless: false,
-    slowMo: 500,
+    slowMo: 1000,
   },
 };

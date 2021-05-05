@@ -14,7 +14,7 @@ beforeAll(async () => {
   }
 });
 
-describe("Login flow", () => {
+describe("Question flow", () => {
   it("It should post a new question", async () => {
     await page.click("#test-new-question");
     expect(await page.url()).toBe("http://localhost:3000/uj");
@@ -38,13 +38,43 @@ describe("Login flow", () => {
     tmp.pop();
     let final = tmp.join("/");
     expect(final).toBe("http://localhost:3000/kerdes");
-    ///data-test -> await page.click('[data-test="editQuestionButton"]');
+  });
+
+  it("Question should be editable", async () => {
+    await page.click("#test-edit-question");
+    await page.keyboard.press("Tab");
+    await page.keyboard.press("Tab");
+    await page.keyboard.press("Tab");
+    await page.keyboard.press("Tab");
+    await page.keyboard.press("Tab");
+    await page.keyboard.type("cim2");
+    await page.click("text=Szerkesztés");
+    expect(page).toHaveSelector("text=cim2");
   });
 
   it("Questions should be seachable", async () => {
     await page.keyboard.press("Tab");
     await page.keyboard.press("Tab");
-    await page.keyboard.type("cim");
-    expect(page).toHaveSelector("text=cim");
+    await page.keyboard.type("cim2");
+    expect(page).toHaveSelector("text=cim2");
   });
+
+  it("Question should be deletable", async () => {
+    await page.click("text=cim2");
+    await page.click("#test-delete-question");
+    await page.click("text=Igen");
+
+    await page.keyboard.press("Tab");
+    await page.keyboard.press("Tab");
+    await page.keyboard.type("cim2");
+    expect(page).not.toHaveSelector("text=cim2");
+  });
+
+  /*
+  it("Profile should be visitable", async () => {
+    await page.click([data-test=]);
+    await page.click("#headlessui-menu-button-36");
+    expect(await page.url()).toBe("http://localhost:3000/profil");
+  });
+  */
 });

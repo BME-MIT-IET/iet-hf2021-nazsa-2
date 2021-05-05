@@ -207,6 +207,7 @@ export default function Question({
                 tooltip="Kérdés szerkesztése"
                 onClick={() => router.push(`/kerdes/${id}/szerkesztes`)}
                 data-test="editQuestionButton"
+                id="test-edit-question"
               >
                 <Edit />
               </Button>
@@ -215,6 +216,7 @@ export default function Question({
                 tooltip="Kérdés törlése"
                 onClick={openDeleteModal}
                 data-test="deleteQuestionButton"
+                id="test-delete-question"
               >
                 <Delete />
               </Button>
