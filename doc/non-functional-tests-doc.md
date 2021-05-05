@@ -6,7 +6,7 @@ With the help of https://web.dev/measure/ we measured how the application perfor
 
 <figure><img src="web.dev_results.png"><figcaption>The results</figcaption></figure>
 
-The page produced desirable results, the only field where the we should consider some changes was the Accessiblity.
+The page produced desirable results, the only field where we should consider some changes was the Accessiblity.
 The application prohibits zooming on the pages, which could be problematic for users with low vision. Even though the website was made for university students, we should make it accessible for everyone.
 
 <figure><img src="web.dev_accessibility.png"><figcaption>Accessiblity notes</figcaption></figure>
@@ -19,6 +19,6 @@ We also checked the site with another web tool. The results were the following:
 
 <figure><img src="webpagetest.org_results.png"><figcaption>The results</figcaption></figure>
 
-Here the results were also promosing with the exception of Security. The used Javascript libraries were safe, however there were some missing HTTP security headers. The page listed some examples, to choose from.
+Here the results were also promising with the exception of Security. The used Javascript libraries were safe, however there were some missing HTTP security headers. The page listed some examples, to choose from.
 
 <figure><img src="webpagetest_security.png"><figcaption>Security issues</figcaption></figure>
