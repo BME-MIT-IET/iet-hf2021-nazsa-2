@@ -18,6 +18,25 @@ jobs:
       - uses: actions/setup-node@v2
         with:
           node-version: "14"
+
+      - name: Create .env file
+        uses: SpicyPizza/create-envfile@v1
+        with:
+          envkey_ACCESS_KEY_ID: ${{ secrets.ACCESS_KEY_ID }}
+          envkey_SECRET_ACCESS_KEY: ${{ secrets.SECRET_ACCESS_KEY }}
+          envkey_REGION: "eu-central-1"
+          envkey_S3_BUCKET_NAME: ${{ secrets.S3_BUCKET_NAME }}
+          envkey_NEXT_PUBLIC_S3_URL: ${{ secrets.NEXT_PUBLIC_S3_URL }}
+          envkey_DYNAMO_TABLE_NAME: ${{ secrets.DYNAMO_TABLE_NAME }}
+          envkey_ELASTICSEARCH_INDEX_NAME: ${{ secrets.ELASTICSEARCH_INDEX_NAME }}
+          envkey_ELASTICSEARCH_USER: ${{ secrets.ELASTICSEARCH_USER }}
+          envkey_ELASTICSEARCH_PW: ${{ secrets.ELASTICSEARCH_PW }}
+          envkey_ELASTICSEARCH_DOMAIN_ENDPOINT: ${{ secrets.ELASTICSEARCH_DOMAIN_ENDPOINT }}
+          envkey_OAUTH_SECRET: ${{ secrets.OAUTH_SECRET }}
+          envkey_OAUTH_PASS: ${{ secrets.OAUTH_PASS }}
+          envkey_OAUTH_ID: ${{ secrets.OAUTH_ID }}
+          envkey_JWT_SECRET: ${{ secrets.JWT_SECRET }}
+
       - uses: microsoft/playwright-github-action@v1
       - name: Build and Test project on Node.js 14
         run: npm install && npm run test
