@@ -1,7 +1,9 @@
 import dotenv from "dotenv";
 dotenv.config();
 
-jest.setTimeout(1000 * 60 * 5);
+jest.setTimeout(1000 * 60 * 2);
+
+let createdQuestionId;
 
 beforeAll(async () => {
   await page.goto("http://localhost:3000/belepes");
@@ -12,69 +14,80 @@ beforeAll(async () => {
   if ((await page.url()) !== "http://localhost:3000/") {
     await page.click("text=Engedélyezés");
   }
+  const cookies = await context.cookies();
+  const tokenCookie = cookies.find((c) => c.name === "token");
+
+  if (!tokenCookie) {
+    throw new Error("login failed");
+  }
 });
 
-describe("Question flow", () => {
-  it("It should post a new question", async () => {
-    await page.click("#test-new-question");
-    expect(await page.url()).toBe("http://localhost:3000/uj");
+describe("question flow", () => {
+  it("should allow users to submit a new question", async () => {
+    await page.goto("http://localhost:3000/uj");
+    await page.waitForTimeout(1000);
     await page.keyboard.press("Tab");
     await page.keyboard.press("Tab");
     await page.keyboard.press("Tab");
     await page.keyboard.press("Tab");
     await page.keyboard.press("Tab");
-    await page.keyboard.type("cim");
+    await page.keyboard.type("testTitle");
     await page.keyboard.press("Tab");
-    await page.keyboard.type("torzs");
+    await page.keyboard.type("testBody");
     await page.keyboard.press("Tab");
-    await page.keyboard.type("iet");
-    await page.keyboard.press("Tab");
+    await page.keyboard.type("e2e-test-topic-1");
+    await page.keyboard.press("Enter");
+
     await page.click("text=Küldés");
-    expect(page).toHaveSelector("text=cim");
-    expect(page).toHaveSelector("text=torzs");
 
-    const url = await page.url();
-    let tmp = url.split("/");
-    tmp.pop();
-    let final = tmp.join("/");
-    expect(final).toBe("http://localhost:3000/kerdes");
+    await expect(page).toHaveSelector(
+      `text=${process.env.TEST_OAUTH_PROFILE_NAME}`
+    );
+    await expect(page).toHaveSelector(`text=néhány másodperce`);
+    await expect(page).toHaveSelector(`text=testTitle`);
+    await expect(page).toHaveSelector(`text=testBody`);
+    await expect(page).toHaveSelector(`text=#e2e-test-topic-1`);
+
+    createdQuestionId = (await page.url()).split("/").pop();
   });
 
-  it("Question should be editable", async () => {
-    await page.click("#test-edit-question");
+  it("should allow users to edit their questions", async () => {
+    await page.goto(`http://localhost:3000/kerdes/${createdQuestionId}`);
+
+    await page.click('[data-test="editQuestionButton"]');
+
+    await page.waitForTimeout(1000);
     await page.keyboard.press("Tab");
     await page.keyboard.press("Tab");
     await page.keyboard.press("Tab");
     await page.keyboard.press("Tab");
     await page.keyboard.press("Tab");
-    await page.keyboard.type("cim2");
+    await page.keyboard.type("editedTestTitle");
+    await page.keyboard.press("Tab");
+    await page.keyboard.type("editedTestBody");
+    await page.keyboard.press("Tab");
+    await page.keyboard.type("e2e-test-topic-2");
+    await page.keyboard.press("Enter");
+
     await page.click("text=Szerkesztés");
-    expect(page).toHaveSelector("text=cim2");
+
+    await page.waitForTimeout(2000);
+    await expect(page.url()).toBe(
+      `http://localhost:3000/kerdes/${createdQuestionId}`
+    );
+    await expect(page).toHaveSelector(`text=editedTestTitle`);
+    await expect(page).toHaveSelector(`text=editedTestBody`);
+    await expect(page).toHaveSelector(`text=#e2e-test-topic-1`);
+    await expect(page).toHaveSelector(`text=#e2e-test-topic-2`);
   });
 
-  it("Questions should be seachable", async () => {
-    await page.keyboard.press("Tab");
-    await page.keyboard.press("Tab");
-    await page.keyboard.type("cim2");
-    expect(page).toHaveSelector("text=cim2");
-  });
+  it("should allow users to delete their questions", async () => {
+    await page.goto(`http://localhost:3000/kerdes/${createdQuestionId}`);
 
-  it("Question should be deletable", async () => {
-    await page.click("text=cim2");
-    await page.click("#test-delete-question");
+    await page.click('[data-test="deleteQuestionButton"]');
     await page.click("text=Igen");
 
-    await page.keyboard.press("Tab");
-    await page.keyboard.press("Tab");
-    await page.keyboard.type("cim2");
-    expect(page).not.toHaveSelector("text=cim2");
+    await page.waitForTimeout(1000);
+    await expect(page.url()).toBe("http://localhost:3000/");
   });
-
-  /*
-  it("Profile should be visitable", async () => {
-    await page.click([data-test=]);
-    await page.click("#headlessui-menu-button-36");
-    expect(await page.url()).toBe("http://localhost:3000/profil");
-  });
-  */
 });
